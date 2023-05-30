@@ -64,6 +64,46 @@ The `public_workspace_key` and `event_seatmap_key` are part of the `seatmap` fie
 />
 ```
 
+- Step 3: call the OOVAL `create ticket` API - you need an API key
+
+```js
+const url = "https://sandbox-server.ooval.io/api/v1/tickets/create";
+const options = {
+  method: "POST",
+  headers: {
+    accept: "application/json",
+    "x-api-key": "example-API-key",
+    "content-type": "application/json",
+  },
+  body: JSON.stringify({
+    tickets: [
+      {
+        seat_details: { label: "Floor 1 - Center Block-B-3" },
+        category_name: "VIP Ticket",
+        current_price: "150",
+        current_currency: "€",
+        type: "seated_ticket",
+      },
+      {
+        seat_details: { label: "Floor 1 - Center Block-B-4" },
+        category_name: "VIP Ticket",
+        current_price: "150",
+        current_currency: "€",
+        type: "seated_ticket",
+      },
+    ],
+    customer_email: "example@email.com",
+    event_id: "646a28d84f84532ce8cf1084",
+    event_name: "Bayern vs Dortmund",
+  }),
+};
+
+fetch(url, options)
+  .then((res) => res.json())
+  .then((json) => console.log(json))
+  .catch((err) => console.error("error:" + err));
+```
+
 > **Important!**
 > The details (eg. seat pricing) on the seatmap are **only** for visual purposes. The logic is 100% happeninng at the level of the [OOVAL Ticketing Engine](https://ooval.readme.io).
 
