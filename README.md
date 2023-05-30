@@ -58,10 +58,10 @@ The `public_workspace_key` and `event_seatmap_key` are part of the `seatmap` fie
 ```
 
 > **Important!**
-> The details (eg. seat pricing) on the seatmap are **only** for visual purposes. The logic is 100% happeninng at the level of the [OOVAL Ticketing Engine](https://ooval.readme.io)
+> The details (eg. seat pricing) on the seatmap are **only** for visual purposes. The logic is 100% happeninng at the level of the [OOVAL Ticketing Engine](https://ooval.readme.io).
 
 ## Docs
 The full docs of the seatmap can be found in the [OOVAL docs]() 
 
 ## See more
-As we are using Seatsio for the visual seating map, the `OovalSeatingChart` is equivalent with the `SeatsioSeatingChart`. To see the full extent of the visual customization possible, read the [Seatsio ReactJS](https://docs.seats.io/docs/renderer/embed-a-floor-plan) library docs
+As we are using Seatsio for the visual seating map, the `OovalSeatingChart` is equivalent with the `SeatsioSeatingChart`. To see the full extent of the visual customization possible, read the [Seatsio ReactJS](https://docs.seats.io/docs/renderer/embed-a-floor-plan) library docs.
