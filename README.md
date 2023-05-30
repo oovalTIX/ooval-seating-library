@@ -21,7 +21,7 @@ npm install ooval-seating-library
 
 # 🏗️ Usage
 
-- Step 1: to integrate the seatmap, you need to import the `OovalSeatingChart`:
+- **Step 1**: to integrate the seatmap, you need to import the `OovalSeatingChart`:
 
 ```js
 const { OovalSeatingChart } = require("ooval-seating-library");
@@ -33,7 +33,7 @@ or, if you are [using ES6](https://hacks.mozilla.org/2015/08/es6-in-depth-module
 import { OovalSeatingChart } from "ooval-seating-library";
 ```
 
-- Step 2: creating a chart
+- **Step 2**: creating a chart
 
 The `public_workspace_key` and `event_seatmap_key` are part of the `seatmap` field in the [Event Object](https://ooval.readme.io/reference/the-event-object#the-seatmap-object)
 
@@ -64,7 +64,11 @@ The `public_workspace_key` and `event_seatmap_key` are part of the `seatmap` fie
 />
 ```
 
-- Step 3: call the OOVAL `create ticket` API - you need an API key
+- **Step 3**: book tickets by calling the OOVAL `create ticket` API
+
+> 🚧 API Key needed
+>
+> For this step you need an `API key` from us. Get in touch with us at `contact@ooval.io`.
 
 ```js
 const url = "https://sandbox-server.ooval.io/api/v1/tickets/create";
