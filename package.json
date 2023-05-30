@@ -16,7 +16,7 @@
   "homepage": "https://ooval.io",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/oovalTIX/ooval-seating-library"
   },
   "main": "index.js",
   "type": "module",
