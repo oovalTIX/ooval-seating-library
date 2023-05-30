@@ -5,13 +5,13 @@
 The OOVAL Seating Library works in combination with the [OOVAL Ticketing Engine](https://ooval.readme.io) to power your ticketing infrastructure. 
 The seating library is intended to be integrated in front-end applications (built for example with ReactJS). To provide you with a reliable, tried and tested seatmap solution, we partnered with [Seatsio](https://www.seats.io/).
 
-## Install
+# Install
 
 ```
 npm install ooval-seating-library
 ```
 
-## Usage
+# Usage
 
   - Step 1: to integrate the seatmap, you need to import the `OovalSeatingChart`:
 
@@ -60,8 +60,181 @@ The `public_workspace_key` and `event_seatmap_key` are part of the `seatmap` fie
 > **Important!**
 > The details (eg. seat pricing) on the seatmap are **only** for visual purposes. The logic is 100% happeninng at the level of the [OOVAL Ticketing Engine](https://ooval.readme.io).
 
-## Docs
+# Pricing
+
+## `pricing`
+
+- **Type**: `object[]`
+- **Default**: `[]`
+
+Making the single price point per category visible on the seating map.
+
+> 🚧 Prices must be numbers, not strings
+> 
+> For historical reasons, it's technically possible to pass in strings as price values. Doing so, however, breaks things like ordering, and displaying a minimum and maximum price in tooltips.
+> 
+> So don't do price: `"10.00 €"` or `'10.00'`!  
+> Instead, pass in price: `10.00` and define a `priceFormatter` to turn the number into a properly formatted price string
+
+### Example
+
+```javascript
+pricing: [  
+    { category: 1, price: 30 },  
+    { category: 2, price: 40 },  
+    { category: 3, price: 50 }  
+]
+```
+
+Note that you can also use the category labels instead of their keys:
+
+```javascript JavaScript
+pricing: [  
+    { category: "Balcony", price: 30 },  
+    { category: "Ground Floor", price: 40 },  
+    { category: "Wheelchair", price: 50 }  
+]
+```
+
+## `priceFormatter`
+
+- **Type**: `function(price)`
+- **Default implementation**: return the raw price, as provided by the pricing configuration parameter (i.e. a number or a string).
+
+A function that formats a price when its shown to an end user. This is notably used in the tooltip you see when you hover over a seat.
+
+Note that the result of this function will be escaped, meaning you can't use html entities such as `$#36;`.
+
+### Example
+
+```javascript
+<OovalSeatingChart
+   ...
+   priceFormatter={function (price) {
+     return "€" + price;
+   }}
+	...
+ />
+```
+
+# Selection
+
+## `selectionValidators`
+
+- **Type**: `array`
+- **Default**: `[]`
+
+Selection validators run every time a seat is selected or deselected. They check whether there are no orphan seats, and/or whether all selected seats are consecutive (meaning: next to each other and in the same category).
+
+## `noOrphanSeats`
+
+Checks for orphan seats. An orphan seat is a single seat that's left open.
+
+[block:image]
+{
+  "images": [
+    {
+      "image": [
+        "https://files.readme.io/3d525ff-image.png",
+        null,
+        ""
+      ],
+      "align": "center",
+      "sizing": "35% ",
+      "border": true
+    }
+  ]
+}
+[/block]
+
+### Example
+
+```javascript
+selectionValidators: [
+    { type: 'noOrphanSeats' }
+]
+```
+
+## `maxSelectedObjects`
+
+- **Type**: `number | object[]`
+- **Default**: not set
+
+Restrict the number of objects a user is allowed to select.
+
+This restriction can be implemented in two ways: as a maximum total number of selected objects (by passing in a number), or you can set different limits for each category or ticket type, or even combination thereof (by passing in an object).
+
+### Example
+
+Number:
+
+```javascript
+<OovalSeatingChart
+  ...
+  maxSelectedObjects={10}
+  ...
+/>
+```
+
+Limit per ticket type:
+
+```javascript
+maxSelectedObjects: [
+    { ticketType: 'adult', quantity: 2 },
+    { ticketType: 'child', quantity: 3 },
+    { total: 4 }
+]
+```
+
+> 🚧 ONLY PASSED CATEGORIES WILL BE SELECTABLE
+> 
+> If you don't pass in all categories, the ticket buyer will not be able to select tickets in the missing categories. E.g. if the max number of balcony tickets is set to 2, and no max is set for stalls tickets, the ticket buyer will only be able to select balcony tickets.
+
+# React to events
+
+## `onObjectSelected`
+
+- **Type**: `function(object)`
+
+Fired when the user selects an object. The selected object is passed into this function as a parameter.
+
+### Example
+
+```coffeescript
+const selectedSeats = [];
+
+<OovalSeatingChart
+	...
+  onObjectSelected={function (object) {
+  	selectedSeats.push(object.label);
+  }}
+	...
+/>
+```
+
+## `onObjectDeselected`
+
+- **Type**: `function(object)`
+
+Fired when the user deselects an object. The deselected object is passed into this function as a parameter.
+
+### Example
+
+```javascript
+const selectedSeats = [];
+
+<OovalSeatingChart
+	...
+  onObjectDeselected={function (object) {
+    var index = selectedSeats.indexOf(object.label);
+  	if (index !== -1) selectedSeats.splice(index, 1);
+  }}
+	...
+/>
+```
+
+# Docs
 The full docs of the seatmap can be found in the [OOVAL docs]() 
 
-## See more
+# Find out more
 As we are using Seatsio for the visual seating map, the `OovalSeatingChart` is equivalent with the `SeatsioSeatingChart`. To see the full extent of the visual customization possible, read the [Seatsio ReactJS](https://docs.seats.io/docs/renderer/embed-a-floor-plan) library docs.
