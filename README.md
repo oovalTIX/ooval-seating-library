@@ -5,7 +5,7 @@
 The OOVAL Seating Library works in combination with the [OOVAL Ticketing Engine](https://ooval.readme.io) to power your ticketing infrastructure. 
 The seating library is intended to be integrated in front-end applications (built for example with ReactJS). To provide you with a reliable, tried and tested seatmap solution, we partnered with [Seatsio](https://www.seats.io/).
 
-* [🌱 Install](#install)
+* [🌱 Install](#-install)
 * [Usage](#usage)
 * [Pricing](#pricing)
 * [Selection](#selection)
