@@ -6,12 +6,12 @@ The OOVAL Seating Library works in combination with the [OOVAL Ticketing Engine]
 The seating library is intended to be integrated in front-end applications (built for example with ReactJS). To provide you with a reliable, tried and tested seatmap solution, we partnered with [Seatsio](https://www.seats.io/).
 
 * [🌱 Install](#-install)
-* [Usage](#usage)
-* [Pricing](#pricing)
-* [Selection](#selection)
-* [React to events](#react-to-events)
-* [Docs](#docs)
-* [Find out more](#find-out-more)
+* [🏗️ Usage](#-usage)
+* [🚀 Pricing](#-pricing)
+* [🍿 Selection](#-selection)
+* [🏟️ React to events](#-react-to-events)
+* [📖 Docs](#-docs)
+* [🌌 Find out more](#-find-out-more)
 
 # 🌱 Install
 
@@ -19,7 +19,7 @@ The seating library is intended to be integrated in front-end applications (buil
 npm install ooval-seating-library
 ```
 
-# Usage
+# 🏗️ Usage
 
   - Step 1: to integrate the seatmap, you need to import the `OovalSeatingChart`:
 
@@ -68,7 +68,7 @@ The `public_workspace_key` and `event_seatmap_key` are part of the `seatmap` fie
 > **Important!**
 > The details (eg. seat pricing) on the seatmap are **only** for visual purposes. The logic is 100% happeninng at the level of the [OOVAL Ticketing Engine](https://ooval.readme.io).
 
-# Pricing
+# 🚀 Pricing
 
 ## `pricing`
 
@@ -125,7 +125,7 @@ Note that the result of this function will be escaped, meaning you can't use htm
  />
 ```
 
-# Selection
+# 🍿 Selection
 
 ## `selectionValidators`
 
@@ -198,7 +198,7 @@ maxSelectedObjects: [
 > 
 > If you don't pass in all categories, the ticket buyer will not be able to select tickets in the missing categories. E.g. if the max number of balcony tickets is set to 2, and no max is set for stalls tickets, the ticket buyer will only be able to select balcony tickets.
 
-# React to events
+# 🏟️ React to events
 
 ## `onObjectSelected`
 
@@ -241,8 +241,8 @@ const selectedSeats = [];
 />
 ```
 
-# Docs
+# 📖 Docs
 The full docs of the seatmap can be found in the [OOVAL docs]() 
 
-# Find out more
+# 🌌 Find out more
 As we are using Seatsio for the visual seating map, the `OovalSeatingChart` is equivalent with the `SeatsioSeatingChart`. To see the full extent of the visual customization possible, read the [Seatsio ReactJS](https://docs.seats.io/docs/renderer/embed-a-floor-plan) library docs.
