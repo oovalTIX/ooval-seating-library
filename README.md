@@ -137,22 +137,7 @@ Selection validators run every time a seat is selected or deselected. They check
 
 Checks for orphan seats. An orphan seat is a single seat that's left open.
 
-[block:image]
-{
-"images": [
-{
-"image": [
-"https://files.readme.io/3d525ff-image.png",
-null,
-""
-],
-"align": "center",
-"sizing": "35% ",
-"border": true
-}
-]
-}
-[/block]
+![alt text](https://github.com/oovalTIX/ooval-seating-library/blob/master/images/orphan-validator%402x.png?raw=true)
 
 ### Example
 
